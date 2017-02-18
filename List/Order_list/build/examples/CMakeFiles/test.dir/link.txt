@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/test.dir/test.o  -o test  -L/home/wxg/Working/Github/Data_structure/List/Order_list/build/lib -rdynamic ../src/liblist_function.a -Wl,-rpath,/home/wxg/Working/Github/Data_structure/List/Order_list/build/lib 
