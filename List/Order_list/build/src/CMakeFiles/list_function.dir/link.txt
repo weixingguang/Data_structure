@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblist_function.a  CMakeFiles/list_function.dir/Order_list.o
-/usr/bin/ranlib liblist_function.a

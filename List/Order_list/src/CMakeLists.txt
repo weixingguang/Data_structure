@@ -1,4 +1,4 @@
-MESSAGE(STATUS "------src------")
+MESSAGE(STATUS "-----exampls------")
 
-ADD_LIBRARY(list_function STATIC Order_list.cpp)
-INSTALL(TARGETS list_function DESTINATION ${ODLIST_BINARY_DIR}/lib)
+ADD_EXECUTABLE(test test.cpp)
+#LINK_DIRECTORIES(${ODLIST_BINARY_DIR}/lib)

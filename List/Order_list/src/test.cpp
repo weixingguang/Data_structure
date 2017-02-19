@@ -6,8 +6,9 @@ using namespace std;
 int main()
 {
 	Order_list<int> list;
+	cout << list.get_length() << endl;
 
-	list.print_list();
+	//list.print_list();
 
 	return 0;
 }
