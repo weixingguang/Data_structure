@@ -14,7 +14,7 @@ class Order_list {
 		int locate_elem(T value);
 		bool list_insert(int index, T value);
 		bool list_delete(int index);
-		void print_list();
+		void list_print();
 		int get_length();
 
 	private:
@@ -34,19 +34,15 @@ bool Order_list <T> ::list_empty ()
 template <typename T>
 bool Order_list <T> ::clear_list ()
 {
-	if( (length < 0) || (length > MAXSIZE) )
-	{
-		cout << "The length of this List is illegal." << endl;
-		return false;
-	}
-	
 	if( length == 0)
 	{
 		cout << "The List is empty." << endl;
-		return true;
+		return false;
 	}
 
 	length = 0;
+
+	return true;
 }
 
 template <typename T>
@@ -75,14 +71,25 @@ int Order_list <T> ::locate_elem (T value)
 template <typename T>
 bool Order_list <T> ::list_insert (int index, T value)
 {
-	if( (index < 1) || (index > length) )
-		return false;
-
 	if( length >= MAXSIZE)
+	{
+		cout << "The list is full." << endl;
 		return false;
+	}
 
-	for(int i = length; i > index; i--)
-		data[i] = data[i-1];
+	if( (index < 1) || (index > (length+1)) )
+	{
+		cout << "The index is out of range." << endl;
+		return false;
+	}
+
+	if(index <= length)
+	{
+		for(int i = length; i > index-1; i--)
+			data[i] = data[i-1];
+	}
+
+	data[index-1] = value;
 
 	length++;
 
@@ -95,16 +102,16 @@ bool Order_list <T> ::list_delete (int index)
 	if( (index < 1) || (index > length) )
 		return false;
 
-	for(int i = index; i < length-1; i++)
+	for(int i = index; i < length; i++)
 		data[i-1] = data[i];
 
 	length--;
-	
+
 	return true;
 }
 
 template <typename T>
-void Order_list <T> ::print_list()
+void Order_list <T> ::list_print()
 {
 	for(int index = 0; index < length; index++)
 		cout << "[ " << index+1 << " ] -->  " << data[index] << endl;
