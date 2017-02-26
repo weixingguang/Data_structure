@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Linklist::Linklist: length(0) ()
+Linklist::Linklist (): length(0)
 {
 	head = new Node(0);
 }
@@ -25,16 +25,20 @@ void Linklist::Insert(int index, int value)
 void Linklist::Remove(int value)
 {
 	Node *node = head;
+	Node *pnode;
 	while(node->next)
 	{
 		if(node->next->data == value)
 		{
+			pnode = node->next;
 			node->next = node->next->next;
 			break;
 		}
 
 		node = node->next;
 	}
+
+	delete pnode;
 }
 
 int Linklist::Length()
@@ -46,9 +50,19 @@ int Linklist::Length()
 void Linklist::Reverse()
 {
 	// TODO
-	Node *node = head->next;
+	Node *node = head;
+	Node *pnode;
+
 	while(node->next)
 	{
+		if(node->next->next)
+			pnode = node->next->next;
+		else
+			pnode = NULL;
+
+		node->next->next = node;
+
+		node = pnode;
 	}
 }
 
@@ -58,6 +72,7 @@ void Linklist::Print()
 	Node *index = head;
 
 	cout << "The value of this Linklist is:" << endl;
+
 	while(index->next)
 	{
 		cout << index->next->data << " ";
@@ -70,14 +85,17 @@ void Linklist::Print()
 Linklist::~Linklist()
 {
 	// FIXME TODO
-	Node *node = head->next;
+	cout << "Linklist: destructor" << endl;
+
+	Node *node = head;
+
+	Node *pnode;
+
 	while(node)
 	{
-		delete node;
+		pnode = node;
 		node = node->next;
+		delete pnode;
 	}
 
-	delete head;
-	head = NULL;
-	cout << "Linklist: destructor" << endl;
 }

@@ -1,0 +1,5 @@
+MESSAGE(STATUS "--------test------")
+
+ADD_EXECUTABLE(test test.cpp)
+LINK_DIRECTORIES(${LINKLIST_BINARY_DIR}/lib)
+TARGET_LINK_LIBRARIES(test linklist)
