@@ -50,20 +50,20 @@ int Linklist::Length()
 void Linklist::Reverse()
 {
 	// TODO
-	Node *node = head;
-	Node *pnode;
+	if(head->next == NULL)
+		return;
 
-	while(node->next)
+	Node *prev = head->next;
+	Node *pcur = prev->next;
+
+	while(pcur != NULL)
 	{
-		if(node->next->next)
-			pnode = node->next->next;
-		else
-			pnode = NULL;
-
-		node->next->next = node;
-
-		node = pnode;
+		prev->next = pcur->next;
+		pcur->next = head->next;
+		head->next = pcur;
+		pcur = prev->next;
 	}
+
 }
 
 
@@ -95,7 +95,10 @@ Linklist::~Linklist()
 	{
 		pnode = node;
 		node = node->next;
+		cout << pnode->data << " ";
 		delete pnode;
 	}
+
+	cout << endl;
 
 }

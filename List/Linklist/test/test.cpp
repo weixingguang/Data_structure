@@ -14,8 +14,9 @@ int main()
 	list->Print();
 
 	//for(int i = 1; i <= node_num-10; i++)
-	list->Remove(7);
-	list->Remove(20);
+	//list->Remove(7);
+	//list->Remove(20);
+	list->Reverse();
 
 	list->Print();
 
