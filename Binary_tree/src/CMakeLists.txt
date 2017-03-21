@@ -1,0 +1,1 @@
+ADD_LIBRARY(BTree STATIC BTree.cpp)
